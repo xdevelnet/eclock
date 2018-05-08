@@ -49,7 +49,7 @@ int writer_cb(void *buffer, unsigned long amount, void *aaa) {
 
 int hour_angle(int hours, int mins) {
 	if (hours >= 12) hours-= 12; // 0 .. 24 to 0 .. 12
-	return hours * 30 + hours / 2;
+	return hours * 30 + mins / 2;
 }
 
 int mins_angle(int mins) {
