@@ -1,0 +1,239 @@
+<!--
+/* clock.html
+ *
+ * Copyright (c) 2017, Xdevelnet (xdevelnet at xdevelnet dot org)
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>ffclock - fastcgi fancy clock</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<script type="text/css">
+	</script>
+	<style>
+	html {
+		height: 100%;
+	}
+	body {
+		background-color: #F9F9F9;
+		font-family: Arial, sans-serif;
+		margin: 0px;
+		padding: 0px;
+		color: #272727;
+		height: 100%;
+	}
+	.time_and_text {
+		font-size: 500%;
+		padding-top: 1%;
+	}
+	.circle {
+		background: #d6d6d6;
+		width: 400pt;
+		height: 400pt;
+		border-radius: 50%;
+		display: inline-block;
+		position: relative;
+		text-align: center;
+		margin-top: 1%;
+	}
+	.arrow {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 2%;
+		left: 0%;
+		right: 0%;
+		top: 49%;
+		border: 0px;
+	}
+	#rotate {
+		-sand-transform: rotate(222deg);
+		-webkit-transform: rotate(222deg);
+		-moz-transform: rotate(222deg);
+		transform: rotate(222deg);
+	}
+	#rotatem {
+		-sand-transform: rotate(25deg);
+		-webkit-transform: rotate(25deg);
+		-moz-transform: rotate(25deg);
+		transform: rotate(25deg);
+	}
+	#rotate1 {
+		-sand-transform: rotate(30deg);
+		-webkit-transform: rotate(30deg);
+		-moz-transform: rotate(30deg);
+		transform: rotate(30deg);
+	}
+	#rotate2 {
+		-sand-transform: rotate(60deg);
+		-webkit-transform: rotate(60deg);
+		-moz-transform: rotate(60deg);
+		transform: rotate(60deg);
+	}
+	#rotate3 {
+		-sand-transform: rotate(90deg);
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
+	#rotate4 {
+		-sand-transform: rotate(120deg);
+		-webkit-transform: rotate(120deg);
+		-moz-transform: rotate(120deg);
+		transform: rotate(120deg);
+	}
+	#rotate5 {
+		-sand-transform: rotate(150deg);
+		-webkit-transform: rotate(150deg);
+		-moz-transform: rotate(150deg);
+		transform: rotate(150deg);
+	}
+	#rotate6 {
+		-sand-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		transform: rotate(180deg);
+	}
+	#rotate7 {
+		-sand-transform: rotate(210deg);
+		-webkit-transform: rotate(210deg);
+		-moz-transform: rotate(210deg);
+		transform: rotate(210deg);
+	}
+	#rotate8 {
+		-sand-transform: rotate(240deg);
+		-webkit-transform: rotate(240deg);
+		-moz-transform: rotate(240deg);
+		transform: rotate(240deg);
+	}
+	#rotate9 {
+		-sand-transform: rotate(270deg);
+		-webkit-transform: rotate(270deg);
+		-moz-transform: rotate(270deg);
+		transform: rotate(270deg);
+	}
+	#rotate10 {
+		-sand-transform: rotate(300deg);
+		-webkit-transform: rotate(300deg);
+		-moz-transform: rotate(300deg);
+		transform: rotate(300deg);
+	}
+	#rotate11 {
+		-sand-transform: rotate(330deg);
+		-webkit-transform: rotate(330deg);
+		-moz-transform: rotate(330deg);
+		transform: rotate(330deg);
+	}
+	#rotate12 {
+		-sand-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	.black {
+		position: relative;
+		width: 49%;
+		height: 100%;
+		left: 50%;
+		background-color: #505050;
+	}
+	.blacke {
+		position: relative;
+		width: 20%;
+		height: 100%;
+		left: 50%;
+		background-color: black;
+	}
+	.blackp {
+		position: relative;
+		width: 7%;
+		height: 100%;
+		left: 93%;
+		background-color: black;
+	}
+	</style>
+</head>
+<body><table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+<tr valign="bottom" height="60%"><td align="center">
+	<div class="circle">
+		<div class="arrow" id="rotate">
+			<div class="black"></div>
+		</div>
+		<div class="arrow" id="rotatem">
+			<div class="blacke"></div>
+		</div>
+		<div class="arrow" id="rotate1">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate2">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate3">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate4">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate5">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate6">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate7">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate8">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate9">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate10">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate11">
+			<div class="blackp"></div>
+		</div>
+		
+		<div class="arrow" id="rotate12">
+			<div class="blackp"></div>
+		</div>
+	</div></td></tr>
+	<tr valign="top"><td align="center" class="time_and_text">15:51:41</td></tr>
+	</table>
+</body>
+</html>
