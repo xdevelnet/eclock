@@ -25,14 +25,14 @@
 //
 // This file should contain only app-related stuff.
 // It must have at least app() function to work, where we
-// going to place all logic.
-// Usually it consist of infinity loop, and every iteration
-// is new request from client.
+// are going to place all logic.
+// Usually it consists of infinity loop where(?) every iteration
+// is the new request from client.
 //
 // Available API:
 //
 // XDAPP_COMPAT_ACCEPT; - must be called right after new loop iteration.
-// XDAPP_COMPAT_FINISH; - must be called when we're done with client.
+// XDAPP_COMPAT_FINISH; - must be called when we're done with client request(?).
 // xdapp_write() - call this when you need to send output data.
 // int app(int success, int failure); - here you describe the actual application.
 //     Please, return from this function using "success" or "failure" values depending on situation.
