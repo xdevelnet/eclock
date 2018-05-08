@@ -35,7 +35,7 @@
 // XDAPP_COMPAT_FINISH; - must be called when we're done with client request(?).
 // xdapp_write() - call this when you need to send output data.
 // int app(int success, int failure); - here you describe the actual application.
-//     Please, return from this function using "success" or "failure" values depending on situation.
+//     This function should only return "success" or "failure" values.
 
 #include <cdfel.c> // https://github.com/xdevelnet/cdfel
 #include <time.h>
