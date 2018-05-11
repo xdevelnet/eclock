@@ -41,7 +41,6 @@
 #include <time.h>
 #include "webappconstants.h"
 
-
 int writer_cb(void *buffer, unsigned long amount, void *aaa) {
 	xdapp_write(buffer, amount);
 	return CDFEL_OK;
@@ -70,6 +69,7 @@ int app(int success, int failure) {
 		int hangle = hour_angle(timeinfo->tm_hour, timeinfo->tm_min) - 90;
 		int mangle = mins_angle(timeinfo->tm_min) - 90;
 
+		CDFEL_RANGE(rt, pass_additional_headers, strizeof(pass_additional_headers));
 		CDFEL_RANGE(rt, p1, strizeof(p1));
 		CDFEL_SIGNED(rt, mangle);
 		CDFEL_RANGE(rt, p2, strizeof(p2));

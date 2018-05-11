@@ -26,6 +26,8 @@
 #define strizeof(a) (sizeof(a)-1)
 #endif
 
+const char pass_additional_headers[] = "Content-Type: text/html\r\n\r\n";
+
 const char p1[] = "<!--\n"
 	"/* clock.html\n"
 	" *\n"
