@@ -21,22 +21,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
-//
-// This file should contain only app-related stuff.
-// It must have at least app() function to work, where we
-// are going to place all logic.
-// Usually it consists of infinity loop where(?) every iteration
-// is the new request from client.
-//
-// Available API:
-//
-// XDAPP_COMPAT_ACCEPT; - must be called right after new loop iteration.
-// XDAPP_COMPAT_FINISH; - must be called when we're done with client request(?).
-// xdapp_write() - call this when you need to send output data.
-// int app(int success, int failure); - here you describe the actual application.
-//     This function should only return "success" or "failure" values.
-
 #include <cdfel.c> // https://github.com/xdevelnet/cdfel
 #include <time.h>
 #include "webappconstants.h"
