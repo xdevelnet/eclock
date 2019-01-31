@@ -29,16 +29,38 @@
 #include <sys/stat.h>
 #include <iso646.h>
 #include <fcgiapp.h>
+#include <string.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include "eclock.xdapp.c"
 
 #define FASTCGI_CONFIG_SOCKET ":9898"
 
+int lfd = STDERR_FILENO;
+
+char *itoa(int value) {
+	static char string[55];
+	sprintf(string, "%d", value);
+	return string;
+}
+
+void try_to_get_log_file() {
+	int fd = open("eclock.app.log", O_WRONLY | O_CREAT | O_APPEND , 0644);
+	if (fd >= 0) lfd = fd;
+}
+
+void error_thrower(const char *error) {
+	size_t len = strlen(error);
+	write(lfd, error, len);
+}
+
 int main() {
+	try_to_get_log_file();
 	int fcgifd = FCGX_OpenSocket(FASTCGI_CONFIG_SOCKET, 128);
 	if (0 > fcgifd) return EXIT_FAILURE;
 	//if (0 > chmod(FASTCGI_CONFIG_SOCKET, 0777)) return EXIT_FAILURE;
-	FCGX_Init();
-	FCGX_InitRequest(&request, fcgifd, 0);
+	if (FCGX_Init() < 0) error_thrower("fcgx_init failed!\n"), exit(EXIT_FAILURE);
+	if (FCGX_InitRequest(&request, fcgifd, 0) < 0) error_thrower("fcgx_init_request failed!\n"), exit(EXIT_FAILURE);
 
-	return app(EXIT_SUCCESS, EXIT_FAILURE);
+	return app(EXIT_SUCCESS, EXIT_FAILURE); // what I was thinking when creating this?
 }

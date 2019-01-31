@@ -25,10 +25,18 @@
 #include <time.h>
 #include "webappconstants.h"
 
+char *itoa(int value);
+void error_thrower(const char *error);
+
 FCGX_Request request;
 
 int writer_cb(void *buffer, unsigned long amount, void *aaa) {
-	FCGX_PutStr(buffer, amount, request.out);
+	if (FCGX_PutStr(buffer, amount, request.out) < 0) {
+		error_thrower("FCGX_Finish_r error: ");
+		int fcerror = FCGX_GetError(request.out);
+		char *estring = itoa(fcerror);
+		error_thrower(estring);
+	}
 	return CDFEL_OK;
 }
 
