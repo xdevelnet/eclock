@@ -41,8 +41,10 @@
 #include <time.h>
 #include "webappconstants.h"
 
+FCGX_Request request;
+
 int writer_cb(void *buffer, unsigned long amount, void *aaa) {
-	xdapp_write(buffer, amount);
+	FCGX_PutStr(buffer, amount, request.out);
 	return CDFEL_OK;
 }
 
@@ -57,12 +59,12 @@ int mins_angle(int mins) {
 
 int app(int success, int failure) {
 	CDFEL_INIT(rt, writer_cb);
-	
+
 	time_t rawtime;
 	struct tm *timeinfo;
 
 	while (1) {
-		XDAPP_COMPAT_ACCEPT;
+		FCGX_Accept_r(&request);
 		
 		time(&rawtime);
 		timeinfo = localtime(&rawtime);
@@ -97,7 +99,7 @@ int app(int success, int failure) {
 		CDFEL_RANGE(rt, p10, strizeof(p10));
 		CDFEL_DONE(rt);
 
-		XDAPP_COMPAT_FINISH;
+		FCGX_Finish_r(&request);
 	}
 
 	return success;

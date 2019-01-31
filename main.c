@@ -29,7 +29,6 @@
 #include <sys/stat.h>
 #include <iso646.h>
 #include <fcgiapp.h>
-#include "xdappcompat.c"
 #include "eclock.xdapp.c"
 
 #define FASTCGI_CONFIG_SOCKET ":9898"
