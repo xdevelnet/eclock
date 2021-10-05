@@ -23,6 +23,7 @@
 
 
 #define _BSD_SOURCE
+#define _DEFAULT_SOURCE
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -32,6 +33,7 @@
 #include "eclock.xdapp.c"
 
 #define FASTCGI_CONFIG_SOCKET ":9898"
+//#define FASTCGI_CONFIG_SOCKET "/tmp/eclock.sock"
 
 int main() {
 	int fcgifd = FCGX_OpenSocket(FASTCGI_CONFIG_SOCKET, 128);
